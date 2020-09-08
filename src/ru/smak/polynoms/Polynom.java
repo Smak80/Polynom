@@ -138,13 +138,25 @@ public class Polynom {
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
-        for (int i = coef.length-1; i>=0; i--){
-            res.append('(');
-            res.append(coef[i]);
-            res.append(')');
-            res.append("x^");
-            res.append(i);
-            if (i > 0) res.append(" + ");
+        for (int i = coef.length-1; i>=0; i--) {
+            if (Math.abs(coef[i]) < ZERO && (i!=0 || coef.length!=1)) continue;
+            double c = coef[i];
+            if (coef[i] < 0) {
+                res.append("-");
+                c = Math.abs(c);
+            } else
+                if (i < coef.length - 1)
+                    res.append("+");
+            if (Math.abs(c-1) > ZERO || i == 0)
+                if (Math.abs(c-(long)c)<ZERO)
+                    res.append((long)c);
+                else
+                    res.append(c);
+            if (i >= 1) res.append('x');
+            if (i > 1) {
+                res.append('^');
+                res.append(i);
+            }
         }
         return res.toString();
     }

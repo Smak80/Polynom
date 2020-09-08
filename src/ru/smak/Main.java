@@ -5,7 +5,7 @@ import ru.smak.polynoms.Polynom;
 public class Main {
     public static void main(String[] args) {
         double[] c1 = {1, 2, 3};
-        double[] c2 = {-1, -2, -2};
+        double[] c2 = {-1, -2, -4};
         Polynom p1 = new Polynom(c1);
         Polynom p2 = new Polynom(c2);
         Polynom p3 = p1.plus(p2);
@@ -15,5 +15,6 @@ public class Main {
         System.out.println("P2(-2)="+p2.invoke(-2));
         System.out.println(p3);
         System.out.println("P3(5)="+p3.invoke(5));
+        System.out.println(p3.minus(p3));
     }
 }
