@@ -22,8 +22,7 @@ public class Polynom {
      * @param c коэффициенты создаваемого полинома
      */
     public Polynom(double[] c){
-        coef = c.clone();
-        correctPower();
+        coef = correctPower(c);
     }
 
     /**
@@ -38,14 +37,14 @@ public class Polynom {
      * Метод корректировки степени полинома в зависимости от числа
      * нулевых коэффициентов при старших степенях
      */
-    private void correctPower(){
+    private double[] correctPower(double[] coef){
         int rem = coef.length;
         while (Math.abs(coef[rem-1])<ZERO && rem > 1){
             rem--;
         }
         double [] c = new double[rem];
         System.arraycopy(coef, 0, c, 0, rem);
-        coef = c;
+        return c;
     }
 
     /**
@@ -92,10 +91,10 @@ public class Polynom {
                 c,
                 0,
                 maxP.coef.length);
-        for (int i = minP.coef.length; i<maxP.coef.length; i++){
+        for (int i = 0; i<minP.coef.length; i++){
             c[i] += maxP.coef[i];
         }
-        coef = c;
+        coef = correctPower(c);
     }
 
     /**
