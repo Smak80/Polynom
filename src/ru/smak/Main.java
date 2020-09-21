@@ -1,6 +1,9 @@
 package ru.smak;
 
+import ru.smak.polynoms.Lagrange;
 import ru.smak.polynoms.Polynom;
+
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,5 +19,11 @@ public class Main {
         System.out.println(p3);
         System.out.println("P3(5)="+p3.invoke(5));
         System.out.println(p3.minus(p3));
+        var dots = new HashMap<Double, Double>();
+        dots.put(-1.0, 1.0);
+        dots.put(0.0, 0.0);
+        dots.put(1., 1.);
+        var lagr = new Lagrange(dots);
+        System.out.println(lagr);
     }
 }
