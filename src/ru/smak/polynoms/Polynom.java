@@ -5,7 +5,8 @@ public class Polynom {
      * Коэффициенты полинома
      */
     protected double [] coef;
-    public static final double ZERO = 1e-24;
+
+    protected static final double ZERO = 1e-24;
 
     /**
      * Инициализация полинома нулевой степени со значением 0
@@ -54,7 +55,7 @@ public class Polynom {
      */
     public Polynom plus(Polynom other){
         Polynom minP, maxP;
-        if (coef.length>other.coef.length){
+        if (this.coef.length>other.coef.length){
             minP = other;
             maxP = this;
         } else {
@@ -65,7 +66,7 @@ public class Polynom {
         for (int i = 0; i<minP.coef.length; i++){
             c[i] = minP.coef[i] + maxP.coef[i];
         }
-        if (maxP.coef.length - minP.coef.length >= 0)
+        if (maxP.coef.length - minP.coef.length > 0)
             System.arraycopy(
                     maxP.coef,
                     minP.coef.length,
@@ -151,7 +152,7 @@ public class Polynom {
         for (int i = coef.length-1; i>=0; i--) {
             //Если коэффициент равен 0...
             //(только не в случае, если это единственный коэффициент)
-            if (Math.abs(coef[i]) < ZERO && (i!=0 || coef.length!=1)) continue;
+            if (Math.abs(coef[i]) < ZERO && coef.length!=1) continue;
             double c = coef[i];
             if (c < 0) {
                 //Для отрицательных значений коэффициентов выводим "-" и далее
@@ -183,6 +184,4 @@ public class Polynom {
         //Преобразуем полученную запись в строку
         return res.toString();
     }
-
-
 }
