@@ -14,7 +14,7 @@ public class Lagrange extends Polynom{
     private void createPoly() {
         Polynom p = new Polynom();
         for (var k : dots.keySet()){
-            p = p.plus(fundamental(k).times(dots.get(k)));
+            p.plusAssign(fundamental(k).times(dots.get(k)));
         }
         coef = p.coef.clone();
     }

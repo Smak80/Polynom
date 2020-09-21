@@ -76,6 +76,28 @@ public class Polynom {
         return new Polynom(c);
     }
 
+    public void plusAssign(Polynom other){
+        Polynom minP, maxP;
+        if (this.coef.length>other.coef.length){
+            minP = other;
+            maxP = this;
+        } else {
+            minP = this;
+            maxP = other;
+        }
+        double [] c = new double[maxP.coef.length];
+        System.arraycopy(
+                maxP.coef,
+                0,
+                c,
+                0,
+                maxP.coef.length);
+        for (int i = minP.coef.length; i<maxP.coef.length; i++){
+            c[i] += maxP.coef[i];
+        }
+        coef = c;
+    }
+
     /**
      * Определение разности двух полиномов
      * @param other вычитаемый полином
