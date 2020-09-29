@@ -1,8 +1,8 @@
-package ru.smak.polynoms;
+package ru.smak.math.polynoms;
 
 import java.util.HashMap;
 
-public class Lagrange extends Polynom{
+public class Lagrange extends Polynom {
 
     private final HashMap<Double, Double> dots;
 
@@ -14,7 +14,7 @@ public class Lagrange extends Polynom{
     private void createPoly() {
         Polynom p = new Polynom();
         for (var k : dots.keySet()){
-            p.plusAssign(fundamental(k).times(dots.get(k)));
+            p = p.plus(fundamental(k).times(dots.get(k)));
         }
         coef = p.coef.clone();
     }
