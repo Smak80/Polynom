@@ -1,5 +1,6 @@
 package ru.smak;
 
+import ru.smak.gui.MainWindow;
 import ru.smak.math.polynoms.Lagrange;
 import ru.smak.math.polynoms.Newton;
 import ru.smak.math.polynoms.Polynom;
@@ -39,5 +40,8 @@ public class Main {
         var newt2 = new Newton(dots);
         System.out.println(lagr);
         System.out.println(newt2);
+
+        var wnd = new MainWindow();
+        wnd.setVisible(true);
     }
 }
