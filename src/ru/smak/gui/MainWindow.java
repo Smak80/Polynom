@@ -18,6 +18,7 @@ public class MainWindow extends JFrame {
     public MainWindow(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(MIN_FRAME_SIZE);
+        setTitle("Полиномы");
 
         mainPanel = new GraphicsPanel();
         controlPanel = new ControlPanel();
